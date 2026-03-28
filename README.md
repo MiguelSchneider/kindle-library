@@ -2,7 +2,7 @@
 
 A Chrome/Brave extension that turns your **Kindle Personal Documents** library into a beautiful, searchable bookshelf — with book covers, Goodreads ratings, read/unread tracking, and cross-browser sync.
 
-![Kindle Library screenshot](https://via.placeholder.com/900x500/0f0f13/6c63ff?text=Kindle+Library)
+![Kindle Library screenshot](screenshots/library.png)
 
 ---
 
