@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Kindle Library",
+  "version": "1.0.0",
+  "description": "View your Kindle Personal Documents in a beautiful library with covers, search, and edit capabilities.",
+  "permissions": ["storage", "activeTab", "tabs"],
+  "host_permissions": [
+    "*://*.goodreads.com/*",
+    "*://*.googleapis.com/*",
+    "*://books.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.amazon.com/hz/mycd/digital-console/*",
+        "*://*.amazon.es/hz/mycd/digital-console/*",
+        "*://*.amazon.co.uk/hz/mycd/digital-console/*",
+        "*://*.amazon.de/hz/mycd/digital-console/*",
+        "*://*.amazon.fr/hz/mycd/digital-console/*",
+        "*://*.amazon.it/hz/mycd/digital-console/*",
+        "*://*.amazon.co.jp/hz/mycd/digital-console/*",
+        "*://*.amazon.ca/hz/mycd/digital-console/*",
+        "*://*.amazon.com.au/hz/mycd/digital-console/*",
+        "*://*.amazon.com.br/hz/mycd/digital-console/*",
+        "*://*.amazon.in/hz/mycd/digital-console/*",
+        "*://*.amazon.com.mx/hz/mycd/digital-console/*",
+        "*://*.amazon.nl/hz/mycd/digital-console/*",
+        "*://*.amazon.pl/hz/mycd/digital-console/*",
+        "*://*.amazon.se/hz/mycd/digital-console/*",
+        "*://*.amazon.sg/hz/mycd/digital-console/*"
+      ],
+      "js": ["parser.js", "content.js"],
+      "css": ["content.css"]
+    }
+  ]
+}

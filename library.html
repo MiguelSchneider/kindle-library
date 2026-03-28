@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kindle Library</title>
+<link rel="stylesheet" href="library.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Kindle Library
+      </div>
+      <button class="sync-btn" id="syncBtn" title="Sync from Amazon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Sync
+      </button>
+      <div class="header-actions">
+        <button class="icon-btn" id="exportBtn" title="Export library">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export
+        </button>
+        <label class="icon-btn" id="importLabel" title="Import library">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Import
+          <input type="file" id="importFile" accept=".json" style="display:none">
+        </label>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search" placeholder="Search by title or author..." autocomplete="off">
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="read">Read</button>
+      <button class="filter-btn" data-filter="unread">Unread</button>
+      <select class="sort-select" id="sort">
+        <option value="date-desc">Newest first</option>
+        <option value="date-asc">Oldest first</option>
+        <option value="rating-desc">Top rated</option>
+        <option value="title-asc">Title A-Z</option>
+        <option value="title-desc">Title Z-A</option>
+        <option value="author-asc">Author A-Z</option>
+        <option value="author-desc">Author Z-A</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div class="book-count" id="bookCount"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Edit Book</h2>
+      <button class="modal-close" id="modalClose">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Title</label>
+        <input type="text" id="editTitle">
+      </div>
+      <div class="field">
+        <label>Author</label>
+        <input type="text" id="editAuthor">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Size</label>
+          <input type="text" id="editSize" disabled>
+        </div>
+        <div class="field">
+          <label>Date Added</label>
+          <input type="text" id="editDate" disabled>
+        </div>
+      </div>
+      <div class="field">
+        <label>Status</label>
+        <div class="read-toggle" id="readToggle">
+          <div class="toggle-track" id="toggleTrack">
+            <div class="toggle-knob"></div>
+          </div>
+          <span id="toggleLabel">Unread</span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-danger" id="resetBtn">Reset</button>
+        <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveBtn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="parser.js"></script>
+<script src="library.js"></script>
+</body>
+</html>

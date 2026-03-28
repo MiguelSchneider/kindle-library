@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 300px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f13;
+      color: #e0e0e0;
+      padding: 16px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .header-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .header h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .stats-card {
+      background: #1a1a24;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .stat {
+      flex: 1;
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .stat-value.total {
+      color: #6c63ff;
+    }
+
+    .stat-value.read {
+      color: #4ade80;
+    }
+
+    .stat-value.unread {
+      color: #f87171;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .sync-info {
+      background: #1a1a24;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sync-info span {
+      color: #aaa;
+    }
+
+    .region-card {
+      background: #1a1a24;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+    }
+
+    .region-card label {
+      font-size: 11px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .region-card select {
+      width: 100%;
+      padding: 7px 10px;
+      background: #16161f;
+      border: 1px solid #3a3a4a;
+      border-radius: 6px;
+      color: #e0e0e0;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .region-card select:focus {
+      border-color: #6c63ff;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    button:active {
+      opacity: 0.7;
+    }
+
+    .btn-primary {
+      background: #6c63ff;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #2a2a3a;
+      color: #c0c0c0;
+      border: 1px solid #3a3a4a;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="header-icon">&#128218;</span>
+    <h1>Kindle Library</h1>
+  </div>
+
+  <div class="stats-card">
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-value total" id="total-count">--</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value read" id="read-count">--</div>
+        <div class="stat-label">Read</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value unread" id="unread-count">--</div>
+        <div class="stat-label">Unread</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sync-info">
+    &#128336; Last sync: <span id="last-sync">Never</span>
+  </div>
+
+  <div class="region-card">
+    <label>Amazon Region</label>
+    <select id="amazon-region"></select>
+  </div>
+
+  <div class="actions">
+    <button class="btn-primary" id="open-library">Open Library</button>
+    <button class="btn-secondary" id="sync-amazon">Sync from Amazon</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

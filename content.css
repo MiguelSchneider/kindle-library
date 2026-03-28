@@ -1,0 +1,189 @@
+/* Kindle Library Extension - Content Script Styles */
+/* All classes prefixed with .kindle-ext- to avoid Amazon CSS conflicts */
+
+/* ── Floating Sync Button ── */
+
+.kindle-ext-sync-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.4);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  line-height: 1;
+}
+
+.kindle-ext-sync-btn:hover {
+  background: #5a52d5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.5);
+}
+
+.kindle-ext-sync-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(108, 99, 255, 0.3);
+}
+
+.kindle-ext-sync-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Full-page Overlay ── */
+
+.kindle-ext-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.kindle-ext-overlay-card {
+  background: #1e1e2e;
+  border-radius: 16px;
+  padding: 40px 48px;
+  text-align: center;
+  min-width: 340px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  color: #e0e0e0;
+}
+
+/* ── Spinner ── */
+
+.kindle-ext-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(108, 99, 255, 0.25);
+  border-top-color: #6c63ff;
+  border-radius: 50%;
+  animation: kindle-ext-spin 0.8s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes kindle-ext-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Progress Text ── */
+
+.kindle-ext-progress-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.kindle-ext-progress-detail {
+  font-size: 14px;
+  color: #a0a0b8;
+  margin-bottom: 0;
+}
+
+/* ── Complete State ── */
+
+.kindle-ext-complete .kindle-ext-spinner {
+  display: none;
+}
+
+.kindle-ext-check {
+  display: none;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #2ecc71;
+  line-height: 48px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.kindle-ext-complete .kindle-ext-check {
+  display: block;
+}
+
+.kindle-ext-complete .kindle-ext-progress-title {
+  color: #2ecc71;
+}
+
+.kindle-ext-link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.kindle-ext-link:hover {
+  background: #5a52d5;
+}
+
+/* ── Error State ── */
+
+.kindle-ext-error .kindle-ext-spinner {
+  display: none;
+}
+
+.kindle-ext-error-icon {
+  display: none;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #e74c3c;
+  line-height: 48px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.kindle-ext-error .kindle-ext-error-icon {
+  display: block;
+}
+
+.kindle-ext-error .kindle-ext-progress-title {
+  color: #e74c3c;
+}
+
+/* ── Close button ── */
+
+.kindle-ext-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.kindle-ext-close:hover {
+  color: #fff;
+}
